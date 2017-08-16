@@ -4,6 +4,10 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var tasks = require('./routes/tasks');
+var user = require('./routes/user');
+//
+// var expressJWT = require('express-jwt');
+// var jwt = require('jsonwebtoken');
 
 const port = 4300;
 
@@ -17,9 +21,11 @@ app.use(express.static(path.join(__dirname,'client')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+// app.use(expressJWT({secret: 'secret'}).unless({path: ['/login', 'api/tasks']}));
 
 app.use('/',index);
 app.use('/api', tasks);
+app.use('/api/user', user);
 
 app.listen(port, function () {
     console.log('server started on port ' + port);
