@@ -12,9 +12,10 @@ export class TaskComponent {
   title: string;
 
   constructor(private taskService: TaskService) {
-
     this.taskService.getTasks().subscribe(task => {
       this.tasks = task;
+      console.log('TaskComponent.ts');
+      console.log(task);
     })
   }
 

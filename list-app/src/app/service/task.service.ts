@@ -1,13 +1,14 @@
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http, Headers, RequestOptions} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Task} from "../model/Task";
-import {headersToString} from "selenium-webdriver/http";
+import {AuthenticationService} from "./authentication.service";
 
 @Injectable()
 export class TaskService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private authenticationService: AuthenticationService) {
     console.log('Task service initialized...');
   }
 
